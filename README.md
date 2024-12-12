@@ -1,17 +1,42 @@
 # Real-Time-Resource-Optimizer-for-Cloud-Workloads
 A tool that dynamically analyzes and optimizes cloud resource utilization for cost efficiency and performance.
 
-The project can involve the following features:
+## Features
 
-Real-Time Monitoring: Use Golang's concurrency capabilities to monitor cloud resources (e.g., CPU, memory, network) in real time.
-Cost Optimization Algorithms: Implement algorithms to recommend scaling up/down resources based on current workloads, SLA requirements, and cost factors.
-Visualization Dashboard: Create a simple frontend to display analytics and recommendations using frameworks like Gin for APIs.
-Multi-Cloud Support: Add compatibility with popular cloud providers like AWS, GCP, and Azure using their SDKs in Go.
-Custom Alerting System: Send alerts via email or messaging platforms when thresholds are crossed or savings are identified.
-Tech Stack:
+- Real-time monitoring of cloud workloads on GCP.
+- Fetch CPU utilization metrics using **Google Cloud Monitoring**.
+- Database integration to store and analyze metrics.
+- Optimization suggestions based on resource usage.
+- REST API for querying metrics and recommendations.
 
-Backend: Golang with Gin/Fiber for API, gRPC for inter-service communication.
-Cloud SDKs: AWS SDK for Go, GCP SDK, or Azure SDK.
-Database: PostgreSQL or MongoDB for data storage.
-Frontend: Use a simple framework like React or Vue.js to complement the backend.
-DevOps Tools: Dockerize the application and deploy it using Kubernetes for scalability.
+## Tech Stack:
+# Backend: ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
+# Cloud SDKs: ![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat&logo=google-cloud&logoColor=white)  ![Google Cloud Monitoring](https://img.shields.io/badge/Google_Cloud_Monitoring-FF9900?style=flat&logo=google-cloud&logoColor=white)
+# Database: ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)
+![Gin](https://img.shields.io/badge/Gin-67C7B5?style=flat&logo=gin&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+
+
+## Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/cloud-optimizer.git
+    cd cloud-optimizer
+    ```
+
+2. Install dependencies:
+    ```bash
+    go mod tidy
+    ```
+
+3. Set up your **GCP credentials** and enable required APIs.
+
+4. Run the application:
+    ```bash
+    go run main.go
+    ```
+
+## License
+
+MIT License. See `LICENSE` for more information.
