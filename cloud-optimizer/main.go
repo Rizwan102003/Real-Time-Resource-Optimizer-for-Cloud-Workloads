@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	instanceID := "4112819316644587855"
+	instanceID := ""
 	projectID := "real-time-resource-optimizer"
 	services.FetchGCPMetrics(instanceID, projectID)
 }
