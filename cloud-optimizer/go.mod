@@ -54,4 +54,7 @@ require (
 	google.golang.org/grpc v1.67.1 // indirect
 	google.golang.org/protobuf v1.35.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
+	cloud.google.com/go v0.102.0
+	google.golang.org/genproto v0.0.0-20221020192409-c6ee38da37c9
+	github.com/lib/pq v1.10.4
 )

@@ -8,13 +8,13 @@ import (
 	"google.golang.org/genproto/googleapis/monitoring/v3"
 )
 
-func FetchGCPMetrics(instanceID string, projectID string) {
+// FetchGCPMetrics fetches CPU utilization metrics from GCP
+func FetchGCPMetrics(instanceID string, projectID string) ([]*monitoring.TimeSeries, error) {
 	// Create a Cloud Monitoring client
 	ctx := context.Background()
 	client, err := monitoring.NewMetricClient(ctx)
 	if err != nil {
-		fmt.Println("Error creating client:", err)
-		return
+		return nil, fmt.Errorf("Error creating client: %v", err)
 	}
 	defer client.Close()
 
@@ -41,20 +41,17 @@ func FetchGCPMetrics(instanceID string, projectID string) {
 
 	// Fetch data
 	it := client.ListTimeSeries(ctx, req)
+	var metrics []*monitoring.TimeSeries
 	for {
 		series, err := it.Next()
 		if err != nil {
 			if err.Error() == "iterator done" {
 				break
 			}
-			fmt.Println("Error fetching metrics:", err)
-			return
+			return nil, fmt.Errorf("Error fetching metrics: %v", err)
 		}
-
-		// Print time series data
-		fmt.Println("Metric:", series.GetMetric().GetType())
-		for _, point := range series.GetPoints() {
-			fmt.Printf("Value at %s: %v\n", point.GetInterval().GetEndTime(), point.GetValue().GetDoubleValue())
-		}
+		metrics = append(metrics, series)
 	}
+
+	return metrics, nil
 }
